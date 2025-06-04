@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Movies</title>
+</head>
+<body>
+    <h1>All Movies</h1>
+    {% if movies %}
+        <ul>
+        {% for movie in movies %}
+            <li>
+                <strong>{{ movie.title }}</strong> by {{ movie.director or "Unknown" }} ({{ movie.year or "?" }}) - Rating: {{ movie.rating or "?" }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies added yet.</p>
+    {% endif %}
+
+    <a href="{{ url_for('views.add_movie') }}">Add another movie</a>
+</body>
+</html>
